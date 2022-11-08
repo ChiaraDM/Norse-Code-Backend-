@@ -1,0 +1,30 @@
+{
+  "name": "norse-code-backend",
+  "version": "1.0.0",
+  "description": "An educational game app for primary school aged children",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -L index.js",
+    "setup-db": "node ./database/setup.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChiaraDM/norse-code-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChiaraDM/norse-code-backend/issues"
+  },
+  "homepage": "https://github.com/ChiaraDM/norse-code-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "pg": "^8.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
