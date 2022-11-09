@@ -5,7 +5,7 @@ const cors = require('cors');
 // internal imports
 const logRoutes = require('./middleware/logger');
 // routes
-// const gameRouter = require('./routers/game');
+const gameRouter = require('./routers/gameRouter');
 
 // configuration
 const api = express();
@@ -21,6 +21,6 @@ api.get("/", (req, res) => {
     });
 });
 
-// api.use("/games", gameRouter);
+api.use("/games", gameRouter);
 
 module.exports = api;
