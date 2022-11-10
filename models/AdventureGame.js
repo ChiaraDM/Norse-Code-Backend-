@@ -41,6 +41,38 @@ class AdventureGame extends Game {
 
     return adventureGames.map((game) => new AdventureGame(game));
   }
+
+  static async getOneById(id) {
+    const response = await db.query("SELECT * FROM game WHERE game_id = $1", [id]);
+    const game = response.rows[0];
+
+    if (response.rows.length != 1) {
+      throw new Error("Unable to locate user.");
+    }
+
+    // get that game's scenes
+    const sceneResponse = await db.query("SELECT * FROM scene WHERE game_id = $1", [id]);
+    const scenes = sceneResponse.rows;
+
+    // for scene, get that scene's items and chats, and append it to the object
+    for (let i = 0; i < scenes.length; i++) {
+      const sceneItemsResponse = await db.query("SELECT * FROM item WHERE scene_id = $1", [
+        scenes[i]["scene_id"],
+      ]);
+      const sceneItems = sceneItemsResponse.rows;
+      scenes[i]["items"] = sceneItems;
+
+      const sceneChatsResponse = await db.query("SELECT * FROM chat WHERE scene_id = $1", [
+        scenes[i]["scene_id"],
+      ]);
+      const sceneChats = sceneChatsResponse.rows;
+      scenes[i]["chats"] = sceneChats;
+    }
+
+    game["scenes"] = scenes
+
+    return new AdventureGame(game)
+  }
 }
 
 module.exports = AdventureGame;
