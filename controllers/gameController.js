@@ -20,6 +20,16 @@ async function showAllAdventureGames(req, res) {
   }
 }
 
+async function showAdventure(req, res) {
+  try {
+    const id = parseInt(req.params.id);
+    const game = await AdventureGame.getOneById(id)
+    res.json(game);
+  } catch (err) {
+    res.status(404).json({ error: err.message });
+  }
+}
+
 async function showAllTimelineGames(req, res) {
   try {
     const timelineGames = await TimelineGame.getAllTimelineGames();
@@ -32,5 +42,6 @@ async function showAllTimelineGames(req, res) {
 module.exports = {
   showAllGames,
   showAllAdventureGames,
+  showAdventure,
   showAllTimelineGames,
 };
