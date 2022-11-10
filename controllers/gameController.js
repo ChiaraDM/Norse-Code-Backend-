@@ -1,6 +1,7 @@
 const Game = require('../models/Game');
+const AdventureGame = require('../models/AdventureGame');
 
-async function index (req, res) {
+async function showAllGames (req, res) {
     try {
         const games = await Game.getAllGames();
         res.json(games);
@@ -9,6 +10,15 @@ async function index (req, res) {
     }
 }
 
+async function showAllAdventureGames (req, res) {
+    try {
+        const adventureGames = await AdventureGame.getAllAdventureGames();
+        res.json(adventureGames);
+    } catch (err) {
+        res.status(500).json({"error": err.message});
+    }
+}
+
 module.exports = {
-    index
+    showAllGames, showAllAdventureGames
 }
