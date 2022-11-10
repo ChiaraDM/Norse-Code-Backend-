@@ -3,7 +3,7 @@ const Game = require("../models/Game");
 
 class TimelineGame extends Game {
   constructor({ game_id, game_type, game_topic, game_description, cards }) {
-    super(game_id, game_type, game_topic, game_description);
+    super({ game_id, game_type, game_topic, game_description });
     this.cards = cards;
   }
 
@@ -14,15 +14,18 @@ class TimelineGame extends Game {
     const response = await db.query("SELECT * FROM game WHERE game_type = 'timeline'");
     const timelineGames = response.rows;
 
-    const cards = [];
     for (let i = 0; i < timelineGames.length; i++) {
-      const cardRes = await db.query("SELECT * FROM card WHERE game_id = $1", [i + 1]);
-      cards.push(cardRes.rows);
+      // timelinegames[i] = current timeline game
+      const cardRes = await db.query("SELECT * FROM card WHERE game_id = $1", [
+        timelineGames[i]["game_id"],
+      ]);
+      const cards = cardRes.rows;
+      timelineGames[i]["cards"] = cards;
     }
 
-    console.log("cards", cards);
+    console.log("timelime games: ", timelineGames);
 
-    return timelineGames;
+    return timelineGames.map((game) => new TimelineGame(game));
   }
 }
 
