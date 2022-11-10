@@ -27,6 +27,23 @@ class TimelineGame extends Game {
 
     return timelineGames.map((game) => new TimelineGame(game));
   }
+
+  static async getOneById(id) {
+    const response = await db.query("SELECT * FROM game WHERE game_id = $1", [id]);
+    const game = response.rows[0];
+
+    if (response.rows.length != 1) {
+      throw new Error("Unable to locate user.");
+    }
+
+    // get that game's cards
+    const cardResponse = await db.query("SELECT * FROM card WHERE game_id = $1", [id]);
+    const cards = cardResponse.rows;
+
+    game["cards"] = cards;
+
+    return new TimelineGame(game);
+  }
 }
 
 module.exports = TimelineGame;
