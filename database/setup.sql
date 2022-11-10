@@ -69,6 +69,7 @@ INSERT INTO item
 VALUES
     (1, 'stick', 'greeks used this item to whack stuff', TRUE),
     (1, 'sword', 'greeks used swords to kill other people', FALSE),
+    (2, 'vase', 'greeks used vases to ???', TRUE),
     (3, 'shield', 'romans used shields to block swords and arrows', TRUE);
 
 INSERT INTO chat
@@ -76,7 +77,8 @@ INSERT INTO chat
 VALUES
     (1, 'go to the market with your stick!'),
     (1, 'go to the temple'),
-    (2, 'go to the colosseum');
+    (2, 'go to the colosseum'),
+    (3, 'go to war');
 
 INSERT INTO card
     (card_order, card_img_path, card_date, card_description, game_id)
