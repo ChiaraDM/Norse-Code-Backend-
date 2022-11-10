@@ -3,46 +3,39 @@ const Game = require('../models/Game');
 
 class AdventureGame extends Game {
     constructor({game_id, game_type, game_topic, game_description, scenes}) {
-        super(game_id, game_type, game_topic, game_description);
+        super({game_id, game_type, game_topic, game_description});
         this.scenes = scenes;
     }
-
-    // all the adventure games
-    // get all the scenes for each game, and put it inside the game
-    // for all the scenes, get all the items and chats for that scene
 
     static async getAllAdventureGames() {
         const response = await db.query("SELECT * FROM game WHERE game_type = 'adventure'");
         const adventureGames = response.rows;
 
-        const scenes = []
         for (let i = 0; i < adventureGames.length; i++) {
-            const sceneRes = await db.query("SELECT * FROM scene WHERE game_id = $1", [i+1]);
-            scenes.push(sceneRes.rows);
-        }
+            //adventureGames[i] = current adventure game
+            // for each one, i want to get that game's scenes and append it
+            const sceneResponse = await db.query("SELECT * FROM scene WHERE game_id = $1", [adventureGames[i]["game_id"]]);
+            const scenes = sceneResponse.rows;
 
-        const sceneItems = []
-        for (let i = 0; i < scenes.length; i++){
-            const sceneItemsRes = await db.query("SELECT * FROM item WHERE scene_id = $1", [i+1]) 
-            console.log(sceneItemsRes.rows);
-            sceneItems.push(sceneItemsRes.rows)
-        }
+            // for each games scene, get that scenes items and chats, and append it to the object
+            for (let j = 0; j < scenes.length; j++) {
+                const sceneItemsResponse = await db.query("SELECT * FROM item WHERE scene_id = $1", [scenes[j]["scene_id"]]);
+                const sceneItems = sceneItemsResponse.rows;
+                scenes[j]["items"] = sceneItems;
 
-        console.log("scenes", scenes);
-        console.log("sceneItems", sceneItems);
-
-        for (let i = 0; i < sceneItems.length; i++) {
-            for(let j = 0; i < scenes[i].length; i++) {
-                scenes[i][j]["items"] = sceneItems[i]
+                const sceneChatsResponse = await db.query("SELECT * FROM chat WHERE scene_id = $1", [scenes[j]["scene_id"]]);
+                const sceneChats = sceneChatsResponse.rows;
+                scenes[j]["chats"] = sceneChats;
             }
+            
+            adventureGames[i]["scenes"] = scenes;
         }
 
-        for (let i = 0; i < scenes.length; i++) {
-            adventureGames[i]["scenes"] = scenes[i];
-        }
-        
-        return adventureGames
+        console.log(adventureGames);
+
+        return adventureGames.map(game => new AdventureGame(game));
     }
+
 }
 
 module.exports = AdventureGame;
