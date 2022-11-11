@@ -83,12 +83,12 @@ VALUES
 INSERT INTO card
     (card_order, card_img_path, card_date, card_description, game_id)
 VALUES
-    (1, '../../../src/assets/placeholder.jpeg', 'AD43', 'Emperor Claudius, invades Britain with an army that includes elephants!', 3),
-    (2, '../../../src/assets/placeholder.jpeg', 'AD60', 'The Romans try to conquer North Wales. They first tried this in AD48. Boudica''s Iceni tribe rebel and burn the towns of Colchester, London and Verulamium (St Albans) to the ground.', 3),
-    (3, '../../../src/assets/placeholder.jpeg', 'AD73', 'The Romans conquer Wales. They build a network of forts across the country.', 3),
-    (4, '../../../src/assets/placeholder.jpeg', 'AD82', 'The Roman general Agricola considers invading Ireland with only 6000 men. It has never been proved that he did invade.', 3),
-    (5, '../../../src/assets/placeholder.jpeg', 'AD122', 'The Emperor Hadrian orders the building of a huge wall to mark the northern limit of his Empire. It runs for 74 miles between Wallsend on the River Tyne and Bowness-on-Solway in Cumbria.', 3),
-    (6, '../../../src/assets/placeholder.jpeg', 'AD138', 'The Romans tried to invade Scotland again and build a wall of turf and forts named the Antonine Wall, it is used until around AD160 before the Romans abandon it and fall back to Hadrian''s Wall.', 3),
-    (7, '../../../src/assets/placeholder.jpeg', 'AD208', 'The Emperor Septimius Severus and his sons Caracalla and Geta, lead campaigns in Scotland. In AD211 the campaigns are abandoned, along with most Roman forts in Scotland.', 3),
-    (8, '../../../src/assets/placeholder.jpeg', 'AD306', 'Constantine ''the Great'' is declared Emperor in York.', 3),
-    (9, '../../../src/assets/placeholder.jpeg', 'AD410', 'By the early 5th century many Roman troops are sent back to mainland Europe to defend other areas of the Empire against Barbarian invasions. Roman rule ends in Britain.', 3);
+    (1, '../../../src/assets/timelinePictures/claudius.jpeg', 'AD43', 'Emperor Claudius, invades Britain with an army that includes elephants!', 3),
+    (2, '../../../src/assets/timelinePictures/colchester.jpg', 'AD60', 'The Romans try to conquer North Wales. Boudica''s Iceni tribe rebel and burn the towns of Colchester, London and Verulamium to the ground.', 3),
+    (3, '../../../src/assets/timelinePictures/wales.jpeg', 'AD73', 'The Romans conquer Wales. They build a network of forts across the country.', 3),
+    (4, '../../../src/assets/timelinePictures/agricola.jpeg', 'AD82', 'The Roman general Agricola considers invading Ireland with only 6000 men. It has never been proved that he did invade.', 3),
+    (5, '../../../src/assets/timelinePictures/hadrian.jpeg', 'AD122', 'The Emperor Hadrian orders the building of a 74 mile wall to mark the northern limit of his Empire. It runs from Wallsend to Bowness-on-Solway in Cumbria.', 3),
+    (6, '../../../src/assets/timelinePictures/scotland.jpeg', 'AD138', 'The Romans tried to invade Scotland again and build a wall of forts named the Antonine Wall. Around AD160 the Romans abandon it and fall back to Hadrian''s Wall.', 3),
+    (7, '../../../src/assets/timelinePictures/septimus.jpeg', 'AD208', 'The Emperor Septimius Severus and his sons lead campaigns in Scotland. In AD211 the campaigns are abandoned, along with most Roman forts in Scotland.', 3),
+    (8, '../../../src/assets/timelinePictures/constantine.jpeg', 'AD306', 'Constantine ''the Great'' is declared Emperor in York.', 3),
+    (9, '../../../src/assets/timelinePictures/ships.jpeg', 'AD410', 'By the early 5th century many Roman troops are sent back to mainland Europe to defend the Empire against Barbarian invasions. Roman rule ends in Britain.', 3);
