@@ -6,7 +6,7 @@ const cors = require('cors');
 const logRoutes = require('./middleware/logger');
 // routes
 const gameRouter = require('./routers/gameRouter');
-
+const userRouter = require('./routers/userRouter');
 // configuration
 const api = express();
 api.use(cors());
@@ -22,5 +22,6 @@ api.get("/", (req, res) => {
 });
 
 api.use("/games", gameRouter);
+api.use("/register", userRouter);
 
 module.exports = api;
