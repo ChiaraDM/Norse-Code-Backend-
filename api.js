@@ -1,6 +1,7 @@
 // external imports
 const express = require('express');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 // internal imports
 const logRoutes = require('./middleware/logger');
@@ -9,8 +10,10 @@ const gameRouter = require('./routers/gameRouter');
 const userRouter = require('./routers/userRouter');
 // configuration
 const api = express();
-api.use(cors());
+
+api.use(cors({ origin: true, credentials: true}));
 api.use(express.json());
+api.use(cookieParser());
 api.use(logRoutes);
 
 // base route
@@ -22,6 +25,7 @@ api.get("/", (req, res) => {
 });
 
 api.use("/games", gameRouter);
-api.use("/register", userRouter);
+api.use("/users", userRouter);
+
 
 module.exports = api;
