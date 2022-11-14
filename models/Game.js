@@ -1,11 +1,16 @@
 const db = require("../database/connect");
 
 class Game {
-  constructor({ game_id, game_type, game_topic, game_description }) {
+  constructor({ game_id, game_type, game_topic, game_description, game_level, game_subject, game_name, game_bg_img, available }) {
     this.game_id = game_id;
     this.game_type = game_type;
     this.game_topic = game_topic;
     this.game_description = game_description;
+    this.game_level = game_level;
+    this.game_subject = game_subject;
+    this.game_name = game_name;
+    this.game_bg_img = game_bg_img;
+    this.available = available;
   }
 
   static async getAllGames() {

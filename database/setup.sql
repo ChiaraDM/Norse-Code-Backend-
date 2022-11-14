@@ -10,6 +10,11 @@ CREATE TABLE game (
     game_type VARCHAR(30) NOT NULL,
     game_topic VARCHAR(30) NOT NULL,
     game_description VARCHAR(500),
+    game_level VARCHAR(30) NOT NULL,
+    game_subject VARCHAR(30) NOT NULL,
+    game_name VARCHAR(30) NOT NULL,
+    game_bg_img VARCHAR(30),
+    available BOOLEAN NOT NULL,
     PRIMARY KEY (game_id)
 );
 
@@ -51,11 +56,14 @@ CREATE TABLE card (
 );
 
 INSERT INTO game
-    (game_type, game_topic, game_description)
+    (game_type, game_topic, game_description, game_level, game_subject, game_name, game_bg_img, available)
 VALUES
-    ('adventure', 'greek', 'adventure game set in the greek time period'),
-    ('adventure', 'roman', 'adventure game set in the roman time period'),
-    ('timeline', 'roman invasion', 'timeline game for the roman invasion');
+    ('adventure', 'greek', 'adventure game set in the greek time period', 'KS1', 'History', 'Adventure through Greece', 'game background image 1', TRUE),
+    ('adventure', 'roman', 'adventure game set in the roman time period', 'KS1', 'History', 'Adventure through Rome', 'game background image 2', FALSE),
+    ('timeline', 'roman invasion', 'timeline game for the roman invasion', 'KS1', 'History', 'Time Travelling Tim', 'game background image 3', TRUE),
+    ('philosophy example', 'philosophy example', 'super fun philosophy game', 'KS2', 'Philosophy', 'philosophy example', 'game background image 4', FALSE),
+    ('geography example', 'geography example', 'super fun geography game', 'KS1', 'Geography', 'geography example', 'game background image 5', FALSE),
+    ('art history example', 'art history example', 'super fun art history game', 'KS2', 'Art History', 'art history example', 'game background image 6', FALSE);
 
 INSERT INTO scene
     (bg_img, game_id)
