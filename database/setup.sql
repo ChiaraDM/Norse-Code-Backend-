@@ -29,9 +29,10 @@ CREATE TABLE game (
     game_description VARCHAR(500),
     game_level VARCHAR(30) NOT NULL,
     game_subject VARCHAR(30) NOT NULL,
-    game_name VARCHAR(30) NOT NULL,
-    game_bg_img VARCHAR(30),
+    game_name VARCHAR(50) NOT NULL,
+    img_path VARCHAR(100) NOT NULL,
     available BOOLEAN NOT NULL,
+    game_route VARCHAR(30),
     PRIMARY KEY (game_id)
 );
 
@@ -73,14 +74,14 @@ CREATE TABLE card (
 );
 
 INSERT INTO game
-    (game_type, game_topic, game_description, game_level, game_subject, game_name, game_bg_img, available)
+    (game_type, game_topic, game_description, game_level, game_subject, game_name, img_path, available, game_route)
 VALUES
-    ('adventure', 'greek', 'adventure game set in the greek time period', 'KS1', 'History', 'Adventure through Greece', 'game background image 1', TRUE),
-    ('adventure', 'roman', 'adventure game set in the roman time period', 'KS1', 'History', 'Adventure through Rome', 'game background image 2', FALSE),
-    ('timeline', 'roman invasion', 'timeline game for the roman invasion', 'KS1', 'History', 'Time Travelling Tim', 'game background image 3', TRUE),
-    ('philosophy example', 'philosophy example', 'super fun philosophy game', 'KS2', 'Philosophy', 'philosophy example', 'game background image 4', FALSE),
-    ('geography example', 'geography example', 'super fun geography game', 'KS1', 'Geography', 'geography example', 'game background image 5', FALSE),
-    ('art history example', 'art history example', 'super fun art history game', 'KS2', 'Art History', 'art history example', 'game background image 6', FALSE);
+    ('adventure', 'greek', 'Help Time Travelling Tim navigate through Ancient Greece!', 'KS1', 'History', 'Adventure through Greece', 'src/assets/gamesCardImgs/TTTGamesCardImg.png', TRUE, '/TTTAncientGreece' ),
+    ('adventure', 'roman', 'Help Time Travelling Tim navigate through Ancient Rome!', 'KS1', 'History', 'Adventure through Rome', 'src/assets/gamesCardImgs/filler.png', FALSE, '/TTTAncientRome'),
+    ('timeline', 'roman invasion', 'Learn about the events of the Roman Invasion of Britain!', 'KS1', 'History', 'Roman Invasion of Britain', 'src/assets/gamesCardImgs/RomanTimelineImg.png', TRUE, '/timeline/3'),
+    ('Philosophy example', 'Philosophy example', 'Example description for Philosophy Game', 'KS2', 'Philosophy', 'Philosophy example', 'src/assets/gamesCardImgs/filler.png', FALSE, '/PhilosophyGame'),
+    ('Geography example', 'Geography example', 'Example description for Geography Game', 'KS1', 'Geography', 'Geography example', 'src/assets/gamesCardImgs/filler.png', FALSE, '/GeographyGame'),
+    ('Art History example', 'Art History example', 'Example description for Art History Game', 'KS2', 'Art History', 'Art History example', 'src/assets/gamesCardImgs/filler.png', FALSE, '/ArtHistoryGame');
 
 INSERT INTO scene
     (bg_img, game_id)
