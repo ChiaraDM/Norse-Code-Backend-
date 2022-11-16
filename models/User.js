@@ -9,6 +9,7 @@ class User {
     }
 
     static async getOneById(id) {
+        console.log(id)
         const response = await db.query("SELECT * FROM user_account WHERE user_id = $1", [id]);
         if (response.rows.length != 1) {
             throw new Error ("Unable to locate user");
@@ -29,7 +30,7 @@ class User {
     static async createNewUser(data) {
         const { username, password } = data;
         let response = await db.query("INSERT INTO user_account (username, user_password) VALUES ($1, $2) RETURNING user_id", [username, password]);
-        const newId = response.rows[0].id;
+        const newId = response.rows[0].user_id;
         const newUser = await User.getOneById(newId);
         return newUser
     }

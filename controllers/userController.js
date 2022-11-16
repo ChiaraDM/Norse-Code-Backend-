@@ -14,6 +14,7 @@ async function register (req, res) {
         res.status(201).send(result);
 
     } catch (err) {
+        console.log("error")
         res.status(400).json({"error": err.message});
     }
 };
@@ -55,4 +56,19 @@ async function login (req, res) {
     }
 }
 
-module.exports = { register, show, login };
+async function logout (req, res) {
+
+    res.clearCookie("norseUser", {
+        sameSite: "none",
+        secure: true,
+    });
+
+    res.clearCookie("userId", {
+        sameSite: "none",
+        secure: true,
+    });
+
+    res.status(204).send();
+}
+
+module.exports = { register, show, login, logout };
