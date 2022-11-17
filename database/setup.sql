@@ -77,7 +77,7 @@ INSERT INTO game
     (game_type, game_topic, game_description, game_level, game_subject, game_name, img_path, available, game_route)
 VALUES
     ('adventure', 'greek', 'Help Time Travelling Tim navigate through Ancient Greece!', 'KS1', 'History', 'Adventure through Greece', 'src/assets/gamesCardImgs/TTTGamesCardImg.png', TRUE, '/TTTAncientGreece' ),
-    ('adventure', 'roman', 'Help Time Travelling Tim navigate through Ancient Rome!', 'KS1', 'History', 'Adventure through Rome', 'src/assets/gamesCardImgs/filler.png', FALSE, '/TTTAncientRome'),
+    ('adventure', 'roman', 'Help Time Travelling Tim navigate through Ancient Rome!', 'KS1', 'History', 'Adventure through Rome', 'src/assets/gamesCardImgs/TTTAncientRome.png', FALSE, '/TTTAncientRome'),
     ('timeline', 'roman invasion', 'Learn about the events of the Roman Invasion of Britain!', 'KS1', 'History', 'Roman Invasion of Britain', 'src/assets/gamesCardImgs/RomanTimelineImg.png', TRUE, '/timeline/3'),
     ('Philosophy example', 'Philosophy example', 'Example description for Philosophy Game', 'KS2', 'Philosophy', 'Philosophy example', 'src/assets/gamesCardImgs/filler.png', FALSE, '/PhilosophyGame'),
     ('Geography example', 'Geography example', 'Example description for Geography Game', 'KS1', 'Geography', 'Geography example', 'src/assets/gamesCardImgs/filler.png', FALSE, '/GeographyGame'),
